@@ -62,6 +62,23 @@ class floodModuleClass():
                 if area_temp[1][1]>= elv:
                     Parea.append(area_temp[1][0])
                     break
+        #for elv in self.upazila:
+        ActualFloodafectedArea=[]
+        for landType in self.upazila:
+            if landType <= Wl_temp:
+                for i in range(0,area.count()): 
+                    area_temp= self.area[i-1]
+                    if area_temp[1][1]>= Wl_temp:
+                         intarea = area_temp[1][0]
+                         ActualFloodafectedArea.append(area_temp[1][0])
+                     
+            else:
+                 ActualFloodafectedArea.append(0)
+                
+
+                     
+           
+        
         floodDuration=[10,7,5,4,3]
         
   

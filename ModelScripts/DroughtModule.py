@@ -4,8 +4,8 @@ from matplotlib import pyplot as plt
 
 class DroughtModuleClass():
     def initializeModuleforRun(self):
-        print("I made it change")
-     
+        pass
+
     def dotimeStep(self,currentTimStep):
         return
     

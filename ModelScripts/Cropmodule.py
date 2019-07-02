@@ -19,6 +19,7 @@ class cropModuleClass():
         waterDepthList= fmResult[0]
         wdDurationList= fmResult[2]
         floodedArea = fmResult[1]
+        actualDamageList = []
 
         for wd in waterDepthList: 
             if wd<=0.25:
@@ -54,9 +55,14 @@ class cropModuleClass():
                     elif wdu >6:
                         damageclass = 12
             damage = self.damageFactor.iloc[damageclass-1][2]
-            actualProduction = self.optimalYieldRate*self.area*floodedArea[3]/100*damage
-
-            print(actualProduction)
+            actualDamageList.append(damage)
+        actualDamageMH = self.optimalYieldRate*self.area*mhlarea/100*actualDamageList[3]
+        actualDamageH = self.optimalYieldRate*self.area*hlarea/100*actualDamageList[4]
+        ActualProductionMH = self.optimalYieldRate*self.area*mhlarea/100 - actualDamageMH
+        ActualProductionH = self.optimalYieldRate*self.area*hlarea/100 - actualDamageH
+        totalActualProduction = ActualProductionMH+ActualProductionH
+        totalLoss=actualDamageMH+actualDamageH
+        print(totalLoss,totalActualProduction)
 #            print(self.damageFactor.iloc[damageclass-1][2], wd, wdu)
 #print("Damage due to flood (ton):", round(area* yeild * 0.6,0))
         

@@ -27,31 +27,45 @@ class floodModuleClass():
 
     def dotimeStep(self,currentTimStep):
          #wl.iloc[currentTimStep]
+        waterDepth = []
         Wl_temp= self.wl.iloc[currentTimStep]["WL"]
         vll= (Wl_temp>self.upazila[0]) & (Wl_temp < self.upazila[1])
         vllWD= Wl_temp-self.upazila[0]
         if vllWD <=0:
             vllWD=0
+        waterDepth.append(vllWD)
         #print("%.2f" %(vllWD))
         ll= (Wl_temp>self.upazila[1]) & (Wl_temp < self.upazila[2])
         llWD= Wl_temp-self.upazila[1]
         if llWD <=0:
             llWD=0
-            
+        waterDepth.append(llWD)   
         mll= (Wl_temp>self.upazila[2]) & (Wl_temp < self.upazila[3])
         mllWD= Wl_temp-self.upazila[2]
         if mllWD <=0:
             mllWD=0
+        waterDepth.append(mllWD)
         mhl= (Wl_temp>self.upazila[2]) & (Wl_temp < self.upazila[3])
         mhlWD= Wl_temp-self.upazila[2]
         if mhlWD <=0:
             mhlWD=0
+        waterDepth.append(mhlWD)
         hl= (Wl_temp>self.upazila[2]) & (Wl_temp < self.upazila[3])
         hlWD= Wl_temp-self.upazila[2]
         if hlWD <=0:
             hlWD=0
+        waterDepth.append(hlWD)
+        
+        Parea = []
+        for elv in self.upazila:
+            for area_temp in self.area.iterrows():
+                if area_temp[1][1]>= elv:
+                    Parea.append(area_temp[1][0])
+                    break
+        floodDuration=[10,7,5,4,3]
+        
   
-        return vllWD, llWD, mllWD, mhlWD, hlWD
+        return waterDepth, Parea, floodDuration
         
     
         

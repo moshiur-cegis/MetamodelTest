@@ -2,9 +2,9 @@ import pandas as pd
 import numpy as np
 from matplotlib import pyplot as plt
 
-class DroughtModuleClass():
+class IrrigationModuleClass():
     def initializeModuleforRun(self):
-        print("drought module not configured yet")
+        print("Irrigation module not configured yet")
         return
      
     def dotimeStep(self,currentTimeStep):
@@ -16,6 +16,7 @@ class DroughtModuleClass():
 
     
     
+
 
 
 
